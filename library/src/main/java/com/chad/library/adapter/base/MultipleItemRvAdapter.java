@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import android.util.SparseArray;
 import android.view.View;
 
+import com.chad.library.adapter.base.listener.ViewClickListener;
 import com.chad.library.adapter.base.provider.BaseItemProvider;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
 import com.chad.library.adapter.base.util.ProviderDelegate;
@@ -87,9 +88,10 @@ public abstract class MultipleItemRvAdapter<T,V extends BaseViewHolder> extends 
         if (clickListener == null){
             //如果没有设置点击监听，则回调给itemProvider
             //Callback to itemProvider if no click listener is set
-            itemView.setOnClickListener(new View.OnClickListener() {
+            // TODO 修改
+            itemView.setOnClickListener(new ViewClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onViewClick(View v) {
                     provider.onClick(helper, item, position);
                 }
             });

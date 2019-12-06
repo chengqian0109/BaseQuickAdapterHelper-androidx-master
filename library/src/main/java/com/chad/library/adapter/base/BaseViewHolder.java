@@ -38,6 +38,8 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.listener.ViewClickListener;
+
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -384,9 +386,10 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
                 if (!view.isClickable()) {
                     view.setClickable(true);
                 }
-                view.setOnClickListener(new View.OnClickListener() {
+                // TODO 修改
+                view.setOnClickListener(new ViewClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onViewClick(View v) {
                         if (adapter.getOnItemChildClickListener() != null) {
                             adapter.getOnItemChildClickListener().onItemChildClick(adapter, v, getClickPosition());
                         }

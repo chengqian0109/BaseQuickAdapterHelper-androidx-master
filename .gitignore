@@ -28,3 +28,8 @@ proguard/
 .gradle
 .idea
 build
+/.travis.yml
+.circleci/
+.github/
+.travis.yml
+/.circleci/

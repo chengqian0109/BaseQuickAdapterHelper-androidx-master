@@ -45,6 +45,7 @@ import com.chad.library.adapter.base.animation.SlideInBottomAnimation;
 import com.chad.library.adapter.base.animation.SlideInLeftAnimation;
 import com.chad.library.adapter.base.animation.SlideInRightAnimation;
 import com.chad.library.adapter.base.entity.IExpandable;
+import com.chad.library.adapter.base.listener.ViewClickListener;
 import com.chad.library.adapter.base.loadmore.LoadMoreView;
 import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
@@ -780,9 +781,10 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     private K getLoadingView(ViewGroup parent) {
         View view = getItemView(mLoadMoreView.getLayoutId(), parent);
         K holder = createBaseViewHolder(view);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        // TODO 修改
+        holder.itemView.setOnClickListener(new ViewClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onViewClick(View v) {
                 if (mLoadMoreView.getLoadMoreStatus() == LoadMoreView.STATUS_FAIL) {
                     notifyLoadMoreToLoading();
                 }
@@ -960,9 +962,10 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
             return;
         }
         if (getOnItemClickListener() != null) {
-            view.setOnClickListener(new View.OnClickListener() {
+            // TODO 修改
+            view.setOnClickListener(new ViewClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onViewClick(View v) {
                     setOnItemClick(v, baseViewHolder.getLayoutPosition() - getHeaderLayoutCount());
                 }
             });
